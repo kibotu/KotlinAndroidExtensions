@@ -18,6 +18,24 @@
 
 ## How to use
 
+To avoid passing the context everywhere inside the app, we set a weak reference during app start.
+
+1) Add ContextHelper to Application#onCreate
+
+        @Override
+        public void onCreate() {
+            super.onCreate();
+
+            ContextHelper.with(this);
+        }
+
+        @Override
+        public void onTerminate() {
+            super.onTerminate();
+
+            ContextHelper.onTerminate();
+        }
+
 ## How to build
 
     graldew clean build
